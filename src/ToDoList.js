@@ -46,6 +46,20 @@ export default class ToDoList extends Component {
             })
         }
     }
+
+    handleEdit = (e, index) => {
+        const { list } = this.state;
+        this.setState({
+            index,
+            text: list[index]
+        })
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            text: e.target.value
+        })        
+    }
     
 
 
