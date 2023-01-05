@@ -1,0 +1,42 @@
+.list {
+    margin-top: 30px;  
+}
+
+.list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    transition: all 600ms;
+}
+
+.list li:hover {  
+    background-color: rgb(81, 197, 222);
+}
+
+.list li .edit {
+    margin-right: 15px;
+    color: blue;    
+    
+}
+
+.list li .delete {
+    margin-right: 15px;
+    color: red;       
+}
+
+.list li:hover .edit,
+.list li:hover .delete {
+    color: black;
+}
+
+.list li .edit,
+.list li .delete {
+    cursor: pointer; 
+    transition: all 600ms;
+}
+
+.list li span {
+    display: flex;
+    align-items: center;    
+}
