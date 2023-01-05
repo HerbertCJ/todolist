@@ -11,6 +11,18 @@ export default class ToDoList extends Component {
         index: -1,
     }
 
+    componentDidMount() {
+        const list = JSON.parse(localStorage.getItem('list'))
+        if (!list) return;
+        this.setState({ list })
+    }
+
+    componentDidUpdate(prevState) {
+        const { list } = this.state;
+        if (list === prevState.list) return;
+        localStorage.setItem('list', JSON.stringify(list))
+    }
+
     handleDelete = (e, index) => {
         let { list } = this.state;
         let newList = [...list]
@@ -31,12 +43,12 @@ export default class ToDoList extends Component {
         if (text === '') return;
         if (list.indexOf(text) !== -1) return;
 
-        const newList = [...list]        
+        const newList = [...list]
         if (index === -1) {
             this.setState({
                 list: [...newList, text],
-                text: ''                
-            })            
+                text: ''
+            })
         } else {
             newList[index] = text;
             this.setState({
@@ -58,14 +70,14 @@ export default class ToDoList extends Component {
     handleChange = (e) => {
         this.setState({
             text: e.target.value
-        })        
+        })
     }
-    
+
 
 
     render() {
         const { text, list } = this.state;
-        return (            
+        return (
             <div className="container">
                 <h1>To Do List</h1>
                 <Form handleSubmit={this.handleSubmit} handleChange={this.handleChange} text={text} />
